@@ -49,3 +49,18 @@ cat index.html
 
 docker run -d p 9000:80 nginx
 
+volume
+docker volume
+docker volume ls ตvolumeออกมา
+
+docker container inspect  wordpress
+docker create wordpress02
+docker network  create wordpress02
+
+ docker network create  wordpress03
+
+ docker run -d --name mysql03 --network wordpress03 -v C:\docker101\mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=1111 -e MYSQL_DATABASE=wordpress03_db -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress  mysql:5.7
+ docker run -d --name wordpress03 --network wordpress03 -v C:\docker101\wp:/var/www/html -e WORDPRESS_DB_HOST=mysql03 -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -e WORDPRESS_DB_NAME=wordpress03_db -p 890:80 wordpress
+ docker run --name pma03 --network wordpress03 -p 8890:80 -e PMA_ARBITRARY=1 -d phpmyadmin/phpmyadmin
+ C:\docker101\mysql
+ C:\docker101\wp
